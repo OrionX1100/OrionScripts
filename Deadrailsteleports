@@ -19,4 +19,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/Tpfort.github
 AddContent("TextButton", "Tesla Lab", [[
 loadstring(game:HttpGet('https://raw.githubusercontent.com/ringtaa/tptotesla.github.io/refs/heads/main/Tptotesla.lua'))()
 ]])
-  
+
+TextLabel = AddContent("TextLabel")
+TextLabel.Text = "--------------------------"
+
+AddContent("TextButton", "Back", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Deadrailz"))()
+]])
+ 
+ 
