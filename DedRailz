@@ -187,7 +187,7 @@ button.MouseButton1Click:Connect(function()
 end)
 ]])
  
-  AddContent("TextButton", "Aimbot[idk og owner]", [[
+  AddContent("TextButton", "Aimbot idk og owner ", [[
 loadstring(game:HttpGet("https://pastebin.com/raw/NNRzb6Zr"))()
 ]])
 
