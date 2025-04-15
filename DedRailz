@@ -15,6 +15,9 @@ AddContent("TextButton", "Autobonds | Toraisme", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRailsAuto"))()
 ]])
  
+AddContent("TextButton", "Autobonds | Rampage", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/r4mpage4/LuaCom/refs/heads/main/autobonds.lua"))()
+]])
  
 
 AddContent("TextButton", "Npc Lock | GioBolqvi", [[
