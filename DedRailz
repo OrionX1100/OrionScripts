@@ -11,7 +11,11 @@ AddContent("TextButton", "End Script | Toraisme", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
 ]])
  
-
+AddContent("TextButton", "Auto bonds | Toraisme", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRailsAuto"))()
+]])
+ 
+ 
 
 AddContent("TextButton", "Npc Lock | GioBolqvi", [[
 --dead rails wall hack aimbot.
@@ -191,25 +195,48 @@ TextLabel = AddContent("TextLabel")
 TextLabel.Text = "bigga hitbox not recommended ⇩"
 
 AddContent("TextButton", "Run anyway", [[
-local function enlargeHitbox(npc)
-    local humanoidRootPart = npc:FindFirstChild("HumanoidRootPart")
-    if humanoidRootPart then
-        humanoidRootPart.Size = Vector3.new(10, 10, 10)
+local function isNPC(obj)
+    return obj:IsA("Model") and obj:FindFirstChild("HumanoidRootPart") and obj:FindFirstChild("Humanoid") and not Players:GetPlayerFromCharacter(obj)
+end
+
+local function enlargeNPCHitbox(npc)
+    local hrp = npc.HumanoidRootPart
+    if not hrp then
+        warn("NPC missing HumanoidRootPart:", npc)
+        return
+    end
+    hrp.Size = Vector3.new(10, 10, 10)
+    hrp.Transparency = 0.85
+    hrp.CanCollide = false
+end
+
+local function updateNPCsInFolder(folder)
+    for _, npc in ipairs(folder:GetChildren()) do
+        if isNPC(npc) then
+            enlargeNPCHitbox(npc)
+        end
     end
 end
 
-game.Workspace.ChildAdded:Connect(function(child)
-    if child:FindFirstChild("Humanoid") then
-        enlargeHitbox(child)
+-- Assuming NPCs are in a folder named "NPCs" in Workspace
+local npcsFolder = Workspace:FindFirstChild("NPCs")
+if npcsFolder then
+    updateNPCsInFolder(npcsFolder)
+end
+
+btnHitbox.MouseButton1Click:Connect(function()
+    hitboxesEnabled = not hitboxesEnabled
+    btnHitbox.Text = hitboxesEnabled and "Hitbox: ON" or "Hitbox: OFF"
+    if npcsFolder then
+        updateNPCsInFolder(npcsFolder)
     end
 end)
 
---Modify existing NPCs on startup
-for _, npc in pairs(workspace:GetChildren()) do
-    if npc:FindFirstChild("Humanoid") then
-        enlargeHitbox(npc)
+Workspace.DescendantAdded:Connect(function(obj)
+    if isNPC(obj) and hitboxesEnabled then  -- Only enlarge if hitboxesEnabled is true
+        enlargeNPCHitbox(obj)
     end
-end
+end)
 ]])
 
  
