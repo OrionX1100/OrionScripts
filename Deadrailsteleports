@@ -28,6 +28,6 @@ TextLabel = AddContent("TextLabel")
 TextLabel.Text = "--------------------------"
 
 AddContent("TextButton", "Back", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Deadrailz"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailz"))()
 ]])
  
