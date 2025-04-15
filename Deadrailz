@@ -188,67 +188,92 @@ loadstring(game:HttpGet("https://pastebin.com/raw/NNRzb6Zr"))()
 ]])
 
 TextLabel = AddContent("TextLabel")
-TextLabel.Text = "Hitboxes | not tested"
+TextLabel.Text = "Hitbox| may not work"
 
-AddContent("TextButton", "On", [[
-local Workspace = game:GetService("Workspace")
-local Players = game:GetService("Players")
+AddContent("TextButton", "tap this NOW!", [[
+local originalSizes = {}
 
-local function enlargeHitbox(hrp)
-    hrp.Size = Vector3.new(10, 10, 10)
-    hrp.Transparency = 0.85
-    hrp.CanCollide = false
-end
-
-for _, obj in pairs(Workspace:GetDescendants()) do
-    if obj:IsA("Model") and obj:FindFirstChild("HumanoidRootPart") and obj:FindFirstChild("Humanoid") and not Players:GetPlayerFromCharacter(obj) then
-        enlargeHitbox(obj.HumanoidRootPart)
+local function storeOriginalSize(npc)
+    local humanoidRootPart = npc:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        originalSizes[npc] = {
+            x = humanoidRootPart.Size.X,
+            y = humanoidRootPart.Size.Y,
+            z = humanoidRootPart.Size.Z
+        }
     end
 end
 
-Workspace.DescendantAdded:Connect(function(obj)
-    if obj:IsA("Model") and obj:FindFirstChild("HumanoidRootPart") and obj:FindFirstChild("Humanoid") and not Players:GetPlayerFromCharacter(obj) then
-        enlargeHitbox(obj.HumanoidRootPart)
+game.Workspace.ChildAdded:Connect(function(child)
+    if child:FindFirstChild("Humanoid") then --Check if it's an NPC with a Humanoid
+        storeOriginalSize(child)
     end
 end)
+
+-- Store sizes of existing NPCs on startup
+for _, npc in pairs(workspace:GetChildren()) do
+    if npc:FindFirstChild("Humanoid") then
+        storeOriginalSize(npc)
+    end
+end
 ]])
  
-AddContent("TextButton", "Off", [[
-local Workspace = game:GetService("Workspace")
-local Players = game:GetService("Players")
+ 
 
-local originalHRPValues = {}
-
--- Store original values before modification
-for _, obj in pairs(Workspace:GetDescendants()) do
-    if obj:IsA("Model") and obj:FindFirstChild("HumanoidRootPart") and obj:FindFirstChild("Humanoid") and not Players:GetPlayerFromCharacter(obj) then
-        local hrp = obj.HumanoidRootPart
-        originalHRPValues[hrp] = {Size = hrp.Size, Transparency = hrp.Transparency, CanCollide = hrp.CanCollide}
+AddContent("TextButton", "On", [[
+local function modifyHitbox(npc)
+    local humanoidRootPart = npc:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local newPart = Instance.new("Part")
+        newPart.Parent = humanoidRootPart
+        newPart.Name = "ModifiedHitbox"  --Easy identification and cleanup
+        newPart.Size = Vector3.new(10, 10, 10)
+        newPart.BrickColor = BrickColor.new("Black")
+        newPart.Transparency = 0.5  --Approximates semi-transparency
+        newPart.CanCollide = true --Maintain collision
+        newPart.Anchored = false --Inherit movement from HumanoidRootPart
     end
 end
 
-local function revertHitbox(hrp)
-    local originalValues = originalHRPValues[hrp]
-    if originalValues then
-        hrp.Size = originalValues.Size
-        hrp.Transparency = originalValues.Transparency
-        hrp.CanCollide = originalValues.CanCollide
-    end
-end
 
---Revert existing NPCs
-for hrp, _ in pairs(originalHRPValues) do
-    revertHitbox(hrp)
-end
-
--- Revert hitboxes for newly added NPCs
-Workspace.DescendantAdded:Connect(function(obj)
-    if obj:IsA("Model") and obj:FindFirstChild("HumanoidRootPart") and obj:FindFirstChild("Humanoid") and not Players:GetPlayerFromCharacter(obj) then
-        local hrp = obj.HumanoidRootPart
-        originalHRPValues[hrp] = {Size = hrp.Size, Transparency = hrp.Transparency, CanCollide = hrp.CanCollide} --Store original values for newly added NPCs
-        revertHitbox(hrp)
+game.Workspace.ChildAdded:Connect(function(child)
+    if child:FindFirstChild("Humanoid") then
+        modifyHitbox(child)
     end
 end)
+
+--Modify existing NPCs on startup
+for _, npc in pairs(workspace:GetChildren()) do
+    if npc:FindFirstChild("Humanoid") then
+        modifyHitbox(npc)
+    end
+end
+]])
+AddContent("TextButton", "Off", [[
+local originalSizes = require(game.ServerScriptService.OriginalSizeStorage) -- Assuming OriginalSizeStorage.lua is in ServerScriptService
+
+
+local function restoreOriginalSize(npc)
+    local originalSize = originalSizes[npc]
+    if originalSize then
+        local humanoidRootPart = npc:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            humanoidRootPart:FindFirstChild("ModifiedHitbox"):Destroy() --Remove the modified hitbox
+            humanoidRootPart.Size = Vector3.new(originalSize.x, originalSize.y, originalSize.z)
+        end
+    end
+end
+
+--Example usage:  Call this function when you want to restore the original size.  You will need to adapt this to your game's logic.
+--  For example, you might call it when the player presses a key or when a certain event occurs.
+local function restoreAllSizes()
+    for npc, _ in pairs(originalSizes) do
+        restoreOriginalSize(npc)
+    end
+end
+
+--Example call to restore all sizes:
+--restoreAllSizes()
 ]])
  
   TextLabel = AddContent("TextLabel")
