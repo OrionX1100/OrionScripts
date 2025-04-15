@@ -1,14 +1,20 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
 game.CoreGui.GhostGui.MainFrame.Title.Text = "DR | TELEPORTS"
----
+--AddContent("TextButton", "Outpost", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/Tpfort.github.io/refs/heads/main/Tpfort.lua"))()
+]])
 
  TextLabel = AddContent("TextLabel")
 TextLabel.Text = "SCRIPTS ARE FROM RINGTA"
 
+AddContent("TextButton", "Official Ringra Tps", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/testing.github.io/refs/heads/main/test.lua"))()
+]])
+
 TextLabel = AddContent("TextLabel")
 TextLabel.Text = "jump after you tp"
 
-AddContent("TextButton", "Outpost", [[
+ AddContent("TextButton", "Fort", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/Tpfort.github.io/refs/heads/main/Tpfort.lua"))()
 ]])
  
