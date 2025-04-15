@@ -7,11 +7,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-
 ]])
  
  
-AddContent("TextButton", "End Script | Toraisme", [[
+AddContent("TextButton", "Endscript | Toraisme", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
 ]])
  
-AddContent("TextButton", "Auto bonds | Toraisme", [[
+AddContent("TextButton", "Autobonds | Toraisme", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRailsAuto"))()
 ]])
  
