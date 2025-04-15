@@ -27,4 +27,8 @@ AddContent("TextButton", "Back", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Deadrailz"))()
 ]])
  
+AddContent("TextButton", "Sterling", [[
+loadstring(game:HttpGet('https://raw.githubusercontent.com/ringtaa/sterlingnotifcation.github.io/refs/heads/main/Sterling.lua'))()
+]])
  
+  
