@@ -15,7 +15,62 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/AmareScripts/DeadRail
 ]])
 
  AddContent("TextButton", "End + More", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
 
+-- Create the ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "MyGui"
+ScreenGui.Parent = LocalPlayer.PlayerGui
+
+-- Create the Frame
+local Frame = Instance.new("Frame")
+Frame.Name = "MainFrame"
+Frame.BackgroundColor3 = Color3.new(0, 0, 0) -- Make background invisible
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.Size = UDim2.new(0, 200, 0, 100)
+Frame.Parent = ScreenGui
+
+-- Create the Copy Button
+local CopyButton = Instance.new("TextButton")
+CopyButton.Name = "CopyButton"
+CopyButton.Text = "Copy"
+CopyButton.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+CopyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CopyButton.Size = UDim2.new(0, 100, 0, 30)
+CopyButton.Position = UDim2.new(0.5, -50, 0.5, -15)
+CopyButton.Parent = Frame
+
+-- Copy the ScreenGui AND the loadstring code to the clipboard
+CopyButton.MouseButton1Click:Connect(function()
+    local GuiString = game:GetService("HttpService"):JSONEncode(ScreenGui:GetDescendants())
+    local script1 = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/r4mpage4/LuaCom/refs/heads/main/autobonds.lua\"))()"
+    local script2 = "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRailsAuto\"))()"
+    local script3 = "loadstring(game:HttpGet(\"https://api.luarmor.net/files/v3/loaders/255ac567ced3dcb9e69aa7e44c423f19.lua\"))()"
+    setclipboard(GuiString .. "\n" .. script1 .. "\n" .. script2 .. "\n" .. script3)
+    print("ScreenGui and scripts copied to clipboard!")
+end)
+
+-- Create the Close Button
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Text = "Close"
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.Size = UDim2.new(0, 100, 0, 30)
+CloseButton.Position = UDim2.new(0.5, -50, 0.5, 15)
+CloseButton.Parent = Frame
+
+-- Remove the ScreenGui when Close Button is clicked
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+    print("ScreenGui closed!")
+end)
+
+-- Make the ScreenGui visible
+ScreenGui.Enabled = true
 ]])
  
  AddContent("TextButton", "NPC Lock", [[
