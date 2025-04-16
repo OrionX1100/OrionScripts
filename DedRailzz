@@ -37,7 +37,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScrip
 TextLabel.Text = "--------------------------"
 
 AddContent("TextButton", "Teleports", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/testing.github.io/refs/heads/main/test.lua"))() 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/testing.github.io/refs/heads/main/test.lua"))()
+
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/TwoGunVolley/Eeeee/refs/heads/main/RailsDated.txt')))()
 ]])
  
  
