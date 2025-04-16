@@ -90,7 +90,7 @@ GetKey.MouseButton1Click:Connect(function()
 end)
 
 local function validateKey(key)
-  return key == "bombardiro crocodilo" -- The key is "bombardiro crocodilo"
+  return key == "bombardino crocodilo"
 end
 
 CheckKey.MouseButton1Click:Connect(function()
