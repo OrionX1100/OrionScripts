@@ -238,7 +238,7 @@ end)
 TextLabel.Text = "--------------------------"
 
 AddContent("TextButton", "Teleports", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Deadrailsteleports"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ringtaa/testing.github.io/refs/heads/main/test.lua"))() 
 ]])
  
  
