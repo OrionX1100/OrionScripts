@@ -30,7 +30,7 @@ end)
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0.05, 0)
-Title.Text = "Key System"
+Title.Text = "Orion Hub | 🧟‍♂️🚂" -- Updated Title
 Title.TextSize = 18
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1
@@ -63,7 +63,7 @@ local GetKey = Instance.new("TextButton")
 GetKey.Size = UDim2.new(0.35, 0, 0.15, 0)
 GetKey.Position = UDim2.new(0.1, 0, 0.7, 0)
 GetKey.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-GetKey.Text = "✈️🐊" --  Emoji for "Get Key"
+GetKey.Text = "Get Key"
 GetKey.TextSize = 18
 GetKey.TextColor3 = Color3.fromRGB(150, 150, 150)
 GetKey.Parent = Frame
@@ -86,11 +86,11 @@ CheckKeyCorner.CornerRadius = UDim.new(0, 5)
 CheckKeyCorner.Parent = CheckKey
 
 GetKey.MouseButton1Click:Connect(function()
-  setclipboard("Your Way How To Get The Key")
+  setclipboard("✈️🐊") -- Copy the emoji to the clipboard
 end)
 
 local function validateKey(key)
-  return key == "bombardilo crocodilo" -- The key is "bombardilo crocodilo"
+  return key == "bombardiro crocodilo" -- The key is "bombardiro crocodilo"
 end
 
 CheckKey.MouseButton1Click:Connect(function()
