@@ -26,7 +26,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScrip
  
  
  AddContent("TextButton", "NPC Lock", [[
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NpcLock-NoHorseLock"))()
 ]])
 
 
