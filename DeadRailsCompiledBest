@@ -99,9 +99,8 @@ CheckKey.MouseButton1Click:Connect(function()
     TextBox.PlaceholderText = "Correct Key!"
     TextBox.Text = ""
     wait(1)
-    ScreenGui:Destroy()
-    -- Put Your Script Here
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Bobacroco"))() -- Updated loadstring
+    ScreenGui:Destroy() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))() -- Updated loadstring
   else
     TextBox.PlaceholderText = "Invalid key. Try again."
     TextBox.Text = ""
