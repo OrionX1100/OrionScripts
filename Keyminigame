@@ -1,0 +1,73 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local successCount = 0
+
+local counterFrame = Instance.new("Frame")
+counterFrame.Parent = screenGui
+counterFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+counterFrame.Size = UDim2.new(0.2, 0, 0.1, 0)
+counterFrame.Position = UDim2.new(0.4, 0, 0.1, 0)
+
+local successLabel = Instance.new("TextLabel")
+successLabel.Parent = counterFrame
+successLabel.Text = "Success: 0"
+successLabel.TextColor3 = Color3.new(0, 1, 0)
+successLabel.Size = UDim2.new(0.5, 0, 1, 0)
+successLabel.Position = UDim2.new(0, 0, 0, 0)
+
+local buttonArea = Instance.new("Frame")
+buttonArea.Parent = screenGui
+buttonArea.BackgroundColor3 = Color3.new(0, 0, 0)
+buttonArea.Size = UDim2.new(0.5, 0, 0.5, 0)
+buttonArea.Position = UDim2.new(0.25, 0, 0.3, 0)
+
+local winScreen = Instance.new("Frame")
+winScreen.Parent = screenGui
+winScreen.BackgroundColor3 = Color3.new(0, 0, 0)
+winScreen.Size = UDim2.new(1, 0, 1, 0)
+winScreen.Position = UDim2.new(0, 0, 0, 0)
+winScreen.Visible = false
+
+local winLabel = Instance.new("TextLabel")
+winLabel.Parent = winScreen
+winLabel.Text = "You Win!"
+winLabel.TextColor3 = Color3.new(0, 1, 0)
+winLabel.Size = UDim2.new(0.5, 0, 0.1, 0)
+winLabel.Position = UDim2.new(0.25, 0, 0.4, 0)
+
+local function createButton()
+  if successCount == 20 then
+    winScreen.Visible = true
+    wait(2)
+    game.Players.LocalPlayer:Kick("Got the key, try the script now!")
+
+    -- Load and execute the script from GitHub
+    local success, result = pcall(function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Generatekey"))()
+    end)
+
+    if not success then
+      print("Error loading script:", result)
+    end
+
+    return
+  end
+
+  local button = Instance.new("TextButton")
+  button.Parent = buttonArea
+  button.Text = "Click Me!"
+  button.Size = UDim2.new(0.1, 0, 0.1, 0)
+  button.Position = UDim2.new(math.random(), 0, math.random(), 0)
+  button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+  button.TextColor3 = Color3.new(1, 1, 1)
+
+  button.MouseButton1Click:Connect(function()
+    successCount = successCount + 1
+    successLabel.Text = "Success: " .. successCount
+    button:Destroy()
+    createButton()
+  end)
+end
+
+createButton()
