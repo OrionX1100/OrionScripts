@@ -23,15 +23,14 @@ Close.Text = "×"
 Close.TextScaled = true
 Close.TextColor3 = Color3.fromRGB(150, 150, 150)
 Close.Parent = Frame
-
 Close.MouseButton1Click:Connect(function()
-  ScreenGui:Destroy()
+    ScreenGui:Destroy()
 end)
 
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0.05, 0)
-Title.Text = "Orion Hub | 🧟🚂" -- Updated Title
+Title.Text = "Orion Hub | 🧟🔑🚂" -- Updated Title
 Title.TextSize = 18
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1
@@ -60,22 +59,9 @@ local TextBoxCorner = Instance.new("UICorner")
 TextBoxCorner.CornerRadius = UDim.new(0, 5)
 TextBoxCorner.Parent = TextBox
 
-local GetKey = Instance.new("TextButton")
-GetKey.Size = UDim2.new(0.35, 0, 0.15, 0)
-GetKey.Position = UDim2.new(0.1, 0, 0.7, 0)
-GetKey.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-GetKey.Text = "Get Key"
-GetKey.TextSize = 18
-GetKey.TextColor3 = Color3.fromRGB(150, 150, 150)
-GetKey.Parent = Frame
-
-local GetKeyCorner = Instance.new("UICorner")
-GetKeyCorner.CornerRadius = UDim.new(0, 5)
-GetKeyCorner.Parent = GetKey
-
 local CheckKey = Instance.new("TextButton")
 CheckKey.Size = UDim2.new(0.35, 0, 0.15, 0)
-CheckKey.Position = UDim2.new(0.55, 0, 0.7, 0)
+CheckKey.Position = UDim2.new(0.325, 0, 0.7, 0)
 CheckKey.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 CheckKey.Text = "Check Key"
 CheckKey.TextSize = 18
@@ -87,29 +73,41 @@ CheckKeyCorner.CornerRadius = UDim.new(0, 5)
 CheckKeyCorner.Parent = CheckKey
 
 function validateKey(key)
-  -- Check if the key starts with "Orion" and is 10-20 characters long
-  return string.sub(key, 1, 5) == "Orion" and string.len(key) >= 10 and string.len(key) <= 20
+    -- Check if the key starts with "Orion" and is 10-20 characters long
+    return string.sub(key, 1, 5) == "Orion" and string.len(key) >= 10 and string.len(key) <= 20
 end
 
 CheckKey.MouseButton1Click:Connect(function()
-  local enteredKey = TextBox.Text
-  if validateKey(enteredKey) then
-    TextBox.PlaceholderText = "Correct Key!"
-    TextBox.Text = ""
-    wait(1)
-    ScreenGui:Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))() -- Replace with your desired script URL
-  else
-    TextBox.PlaceholderText = "Invalid key. Try again."
-    TextBox.Text = ""
-    wait(1)
-    TextBox.PlaceholderText = "Enter Key..."
-    TextBox.Text = ""
-  end
+    local enteredKey = TextBox.Text
+    if validateKey(enteredKey) then
+        TextBox.PlaceholderText = "Correct Key!"
+        TextBox.Text = ""
+        wait(1)
+        ScreenGui:Destroy()
+        -- loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))() -- Replace with your desired script URL
+    else
+        TextBox.PlaceholderText = "Invalid key. Try again."
+        TextBox.Text = ""
+        wait(1)
+        TextBox.PlaceholderText = "Enter Key..."
+        TextBox.Text = ""
+    end
 end)
 
--- Instead of generating a random key, the GetKey button now executes the script
+local GetKey = Instance.new("TextButton")
+GetKey.Size = UDim2.new(0.35, 0, 0.15, 0)
+GetKey.Position = UDim2.new(0.325, 0, 0.4, 0)
+GetKey.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+GetKey.Text = "Get Key"
+GetKey.TextSize = 18
+GetKey.TextColor3 = Color3.fromRGB(150, 150, 150)
+GetKey.Parent = Frame
+
+local GetKeyCorner = Instance.new("UICorner")
+GetKeyCorner.CornerRadius = UDim.new(0, 5)
+GetKeyCorner.Parent = GetKey
+
 GetKey.MouseButton1Click:Connect(function()
-  loadstring(game:HttpGet("https://github.com/OrionX1100/OrionScripts/blob/main/Startminigame"))() -- Replace with your desired script URL
-  ScreenGui:Destroy()
+    -- Copies the text to the clipboard
+    setclipboard("loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Startminigame"))()) -- Replace with your desired script URL
 end)
