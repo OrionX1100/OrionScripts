@@ -86,21 +86,7 @@ local CheckKeyCorner = Instance.new("UICorner")
 CheckKeyCorner.CornerRadius = UDim.new(0, 5)
 CheckKeyCorner.Parent = CheckKey
 
-function generateKey()
-  local randomStringLength = math.random(10, 20)
-  local randomString = ""
-  for i = 1, randomStringLength do
-    randomString = randomString .. tostring(math.random(0, 9))
-  end
-  return "Orion" .. randomString
-end
-
-GetKey.MouseButton1Click:Connect(function()
-  local key = generateKey()
-  setclipboard(key)
-end)
-
-local function validateKey(key)
+function validateKey(key)
   -- Check if the key starts with "Orion" and is 10-20 characters long
   return string.sub(key, 1, 5) == "Orion" and string.len(key) >= 10 and string.len(key) <= 20
 end
@@ -112,7 +98,7 @@ CheckKey.MouseButton1Click:Connect(function()
     TextBox.Text = ""
     wait(1)
     ScreenGui:Destroy()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))() -- Replace with your desired script URL
   else
     TextBox.PlaceholderText = "Invalid key. Try again."
     TextBox.Text = ""
@@ -120,4 +106,10 @@ CheckKey.MouseButton1Click:Connect(function()
     TextBox.PlaceholderText = "Enter Key..."
     TextBox.Text = ""
   end
+end)
+
+-- Instead of generating a random key, the GetKey button now executes the script
+GetKey.MouseButton1Click:Connect(function()
+  loadstring(game:HttpGet("https://github.com/OrionX1100/OrionScripts/blob/main/Startminigame"))() -- Replace with your desired script URL
+  ScreenGui:Destroy()
 end)
