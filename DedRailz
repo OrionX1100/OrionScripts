@@ -194,10 +194,7 @@ end)
 loadstring(game:HttpGet("https://pastebin.com/raw/NNRzb6Zr"))()
 ]])
 
-TextLabel = AddContent("TextLabel")
-TextLabel.Text = "bigga hitbox not recommended ⇩"
-
-AddContent("TextButton", "Run anyway", [[
+AddContent("TextButton", "Hitboxes|permanent", [[
 local defaultHRPValues = {}
 
 local function updateNPCHitbox(npc)
@@ -237,7 +234,6 @@ Workspace.DescendantAdded:Connect(function(obj)
 end)
 ]])
 
- 
   TextLabel = AddContent("TextLabel")
 TextLabel.Text = "--------------------------"
 
