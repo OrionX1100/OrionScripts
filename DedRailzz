@@ -29,6 +29,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScrip
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NpcLock-NoHorseLock"))()
 ]])
 
+AddContent("TextButton", "fix HF Cam", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NCWS"))()
+]])
 
   TextLabel = AddContent("TextLabel")
 TextLabel.Text = "--------------------------"
