@@ -23,6 +23,7 @@ Close.Text = "×"
 Close.TextScaled = true
 Close.TextColor3 = Color3.fromRGB(150, 150, 150)
 Close.Parent = Frame
+
 Close.MouseButton1Click:Connect(function()
   ScreenGui:Destroy()
 end)
@@ -30,7 +31,7 @@ end)
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 30)
 Title.Position = UDim2.new(0, 0, 0.05, 0)
-Title.Text = "Orion Hub | 🧟‍♂️🚂" -- Updated Title
+Title.Text = "Orion Hub | 🧟♂️🚂" -- Updated Title
 Title.TextSize = 18
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.BackgroundTransparency = 1
@@ -85,12 +86,23 @@ local CheckKeyCorner = Instance.new("UICorner")
 CheckKeyCorner.CornerRadius = UDim.new(0, 5)
 CheckKeyCorner.Parent = CheckKey
 
+function generateKey()
+  local randomStringLength = math.random(10, 20)
+  local randomString = ""
+  for i = 1, randomStringLength do
+    randomString = randomString .. tostring(math.random(0, 9))
+  end
+  return "Orion" .. randomString
+end
+
 GetKey.MouseButton1Click:Connect(function()
-  setclipboard("✈️🐊") -- Copy the emoji to the clipboard
+  local key = generateKey()
+  setclipboard(key)
 end)
 
 local function validateKey(key)
-  return key == "bombardino crocodilo"
+  -- Check if the key starts with "Orion" and is 10-20 characters long
+  return string.sub(key, 1, 5) == "Orion" and string.len(key) >= 10 and string.len(key) <= 20
 end
 
 CheckKey.MouseButton1Click:Connect(function()
@@ -99,8 +111,8 @@ CheckKey.MouseButton1Click:Connect(function()
     TextBox.PlaceholderText = "Correct Key!"
     TextBox.Text = ""
     wait(1)
-    ScreenGui:Destroy() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))() -- Updated loadstring
+    ScreenGui:Destroy()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))()
   else
     TextBox.PlaceholderText = "Invalid key. Try again."
     TextBox.Text = ""
