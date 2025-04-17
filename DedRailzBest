@@ -101,7 +101,7 @@ CheckKey.MouseButton1Click:Connect(function()
     TextBox.Text = ""
     wait(1)
     ScreenGui:Destroy()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DeadRailsCompiledBest"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))()
   else
     TextBox.PlaceholderText = "Invalid key. Try again."
     TextBox.Text = ""
