@@ -1,7 +1,9 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Library/refs/heads/main/Ghost%20Gui'))()
 game.CoreGui.GhostGui.MainFrame.Title.Text = "💀Dead Rails🚂"
 ---
- 
+ AddContent("TextButton", "TN AB [Key]", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/thiennrb7/Script/refs/heads/main/autobond"))()
+]])
  
 AddContent("TextButton", "Nullfire", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/main/Loader"))()
