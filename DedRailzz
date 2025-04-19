@@ -12,10 +12,6 @@ AddContent("TextButton", "Nullfire", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/main/Loader"))()
 ]])
  
- AddContent("TextButton", "Horse Fly", [[
-loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Vehicle%20Fly%20Gui'))()
-]])
- 
  AddContent("TextButton", "bypass", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/AmareScripts/DeadRails/refs/heads/main/Bypass%25AntiCheat.lua"))()
 ]])
