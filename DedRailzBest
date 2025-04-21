@@ -1,1 +1,1 @@
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DedRailzz"))()
