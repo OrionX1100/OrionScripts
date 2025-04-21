@@ -14,6 +14,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DeadRailsNPCAimbot"))()
 ]])
 
+AddContent("TextButton", "BaNjU", [[
+https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/Banjoautomovecamera
+]])
+
  AddContent("TextButton", "End + Tools", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/DeadRails"))()
 ]]) 
