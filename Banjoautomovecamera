@@ -1,0 +1,97 @@
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local userInputService = game:GetService("UserInputService")
+
+-- Main GUI
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Parent = localPlayer.PlayerGui
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0, 400, 0, 200)
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Frame.BorderSizePixel = 0
+Frame.Active = true
+Frame.Draggable = true
+Frame.Parent = ScreenGui
+
+local FrameCorner = Instance.new("UICorner")
+FrameCorner.CornerRadius = UDim.new(0, 10)
+FrameCorner.Parent = Frame
+
+local Close = Instance.new("TextButton")
+Close.Size = UDim2.new(0, 40, 0, 40)
+Close.Position = UDim2.new(1, -40, 0, 0)
+Close.BackgroundTransparency = 1
+Close.Text = "×"
+Close.TextScaled = true
+Close.TextColor3 = Color3.fromRGB(150, 150, 150)
+Close.Parent = Frame
+Close.MouseButton1Click:Connect(function()
+  ScreenGui:Destroy()
+end)
+
+-- Title
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(0.5, 0, 0.3, 0)
+Title.Position = UDim2.new(0.25, 0, 0.1, 0)
+Title.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+Title.Text = "Banjo"
+Title.TextSize = 40
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.SourceSans
+Title.Parent = Frame
+Title.TextStrokeTransparency = 1
+Title.BackgroundTransparency = 1
+
+-- Text Box
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(0.8, 0, 0.2, 0)
+TextBox.Position = UDim2.new(0.1, 0, 0.45, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+TextBox.PlaceholderText = "Chords..."
+TextBox.Text = ""
+TextBox.TextSize = 18
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.Parent = Frame
+
+local TextBoxCorner = Instance.new("UICorner")
+TextBoxCorner.CornerRadius = UDim.new(0, 5)
+TextBoxCorner.Parent = TextBox
+
+-- Buttons
+local buttonY = 0.75
+local buttonWidth = 0.1
+local buttonHeight = 0.2
+local buttonSpacing = 0.005
+local numButtons = 5
+local totalButtonWidth = numButtons * buttonWidth + (numButtons - 1) * buttonSpacing
+local startX = 0.5 - totalButtonWidth / 2
+
+local angles = {-5.002, 5.003, 15.004, 40.005, -40.00}
+
+local function moveCamera(angle)
+  camera.CFrame = CFrame.new(camera.CFrame.Position) * CFrame.Angles(math.rad(angle), 0, 0)
+  userInputService:InjectInputEvent(Enum.UserInputType.MouseButton1, Enum.InputEvent.MouseButton1Down)
+  wait(0.1)
+  userInputService:InjectInputEvent(Enum.UserInputType.MouseButton1, Enum.InputEvent.MouseButton1Up)
+end
+
+local buttons = {"1", "2", "3", "4", "5"}
+
+for i, buttonText in ipairs(buttons) do
+  local button = Instance.new("TextButton")
+  button.Size = UDim2.new(buttonWidth, 0, buttonHeight, 0)
+  button.Position = UDim2.new(startX + (i - 1) * (buttonWidth + buttonSpacing), 0, buttonY, 0)
+  button.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+  button.Text = buttonText
+  button.TextSize = 18
+  button.TextColor3 = Color3.fromRGB(150, 150, 150)
+  button.Parent = Frame
+
+  button.MouseButton1Click:Connect(function()
+    moveCamera(angles[i])
+  end)
+end
