@@ -2,16 +2,16 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/UI-Lib
 game.CoreGui.GhostGui.MainFrame.Title.Text = "💀Dead Rails🚂"
 ----
 
- AddContent("TextButton", "TN AB [Key]", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/thiennrb7/Script/refs/heads/main/autobond"))()
+ AddContent("TextButton", "Moondiety", [[
+loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/dead-rails-teleport-everywhere/refs/heads/main/teleport%20all%20locations'))()
 ]])
  
 AddContent("TextButton", "Nullfire", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Null-Fire/main/Loader"))()
 ]])
  
- AddContent("TextButton", "bypass", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AmareScripts/DeadRails/refs/heads/main/Bypass%25AntiCheat.lua"))()
+ AddContent("TextButton", "Aimbot", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/DeadRailsNPCAimbot"))()
 ]])
 
  AddContent("TextButton", "End + Tools", [[
@@ -21,15 +21,9 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/
  AddContent("TextButton", "More", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/More"))()
 ]])
- 
- 
- 
+
  AddContent("TextButton", "NPC Lock", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NpcLock-NoHorseLock"))()
-]])
-
-AddContent("TextButton", "fix HF Cam", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NCWS"))()
 ]])
 
   TextLabel = AddContent("TextLabel")
