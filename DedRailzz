@@ -3,7 +3,7 @@ game.CoreGui.GhostGui.MainFrame.Title.Text = "💀Dead Rails🚂"
 ----
 
  AddContent("TextButton", "Moondiety", [[
-loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/dead-rails-teleport-everywhere/refs/heads/main/teleport%20all%20locations'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/m00ndiety/DEAD-RAILS-MAIN-SCRIPT-V2/refs/heads/main/MoonDiety.txt'))()
 ]])
  
 AddContent("TextButton", "Nullfire", [[
@@ -26,12 +26,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/gumanba/Scripts/main/
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/More"))()
 ]])
 
- AddContent("TextButton", "Vfly", [[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostPlayer352/Test4/refs/heads/main/ScriptAuthorization%20Source"))()Ioad("9186e2ba1e71992722a5060dc6ec9f27")
-]])
-
  AddContent("TextButton", "NPC Lock", [[
 loadstring(game:HttpGet("https://raw.githubusercontent.com/OrionX1100/OrionScripts/refs/heads/main/NpcLock-NoHorseLock"))()
+]])
+
+ AddContent("TextButton", "Bypass", [[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/m00ndiety/reworked-bypass-v2/refs/heads/main/Protected_7262663125150928.lua.txt"))()
 ]])
 
   TextLabel = AddContent("TextLabel")
